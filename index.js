@@ -74,7 +74,13 @@ app.delete('/todos', (req, res) =>{
 })
 
 app.get('/sort', (req, res) => {
-    res.send("sort categories")
+    let sortedArray = [];
+    todos.forEach(todo => {
+        if (todo.Category === req.query.Category){
+            sortedArray.push(todo);
+        }
+    })
+    res.send(sortedArray)
 })
 
 app.get('/category', (req, res) => {
